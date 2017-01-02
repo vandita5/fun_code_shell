@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# My first shell script
+# Vandita Sharma
+#
+
+clear
+
+for i in {1..8}
+do
+	UUID1[$i]=$(uuidgen)
+	echo ${UUID1[$i]}
+done
+ID=17
+for i in {1..8}
+do
+	if [ `expr $i % 2` != 0 ]; then
+		if [ "$i" == 1 ]; then
+			echo "#elif PILOT_ID == $ID" 
+		else
+			echo "#elif PILOT_ID == $ID" 
+		fi
+		ID=`expr $ID + 1`
+		python little_endian_uuid.py ${UUID1[$i]} 1
+	else
+		python little_endian_uuid.py ${UUID1[$i]} 2
+	fi
+done
+echo "#endif //PILOT_ID"
+
+
+for i in 
+
